@@ -15,7 +15,7 @@
 
 [Shell 函数](https://www.runoob.com/linux/linux-shell-func.html)
 
-[Shell test 命令]
+[Shell test 命令](https://www.runoob.com/linux/linux-shell-test.html)
 1. -eq
 2. =
 3. -e
