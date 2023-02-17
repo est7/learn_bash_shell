@@ -1,94 +1,53 @@
+[Linux 命令大全](https://www.runoob.com/linux/linux-command-manual.html)
+
 [Linux 文件基本属性](https://www.runoob.com/linux/linux-file-attr-permission.html)
+1. chown
+2. chmod
+3. rwx
 
 
-SHELL TEST 命令
-Shell test 命令 Shell 中的 test 命令用于检查某个条件是否成立，它可以进行数值、字符和文件三个方面的测试。
-Shell 中的 test 命令用于检查某个条件是否成立，它可以进行数值、字符和文件三个方面的测试。
+[文件与目录管理](https://www.runoob.com/linux/linux-file-content-manage.html)
+1. cat
+2. cp
+3. mv
+4. mkdir
 
-数值测试
-参数	说明
--eq	等于则为真
--ne	不等于则为真
--gt	大于则为真
--ge	大于等于则为真
--lt	小于则为真
--le	小于等于则为真
-实例
-num1=100
-num2=100
-if test $[num1] -eq $[num2]
-then
-    echo '两个数相等！'
-else
-    echo '两个数不相等！'
-fi
-输出结果：
 
-两个数相等！
-代码中的 [] 执行基本的算数运算，如：
+[Shell 函数](https://www.runoob.com/linux/linux-shell-func.html)
 
-实例
-#!/bin/bash
+[Shell test 命令]
+1. -eq
+2. =
+3. -e
 
-a=5
-b=6
 
-result=$[a+b] # 注意等号两边不能有空格
-echo "result 为： $result"
+[Shell 输入/输出重定向](https://www.runoob.com/linux/linux-shell-io-redirections.html)
 
-结果为:
+1. command > file	将输出重定向到 file。
+2. command < file	将输入重定向到 file。
+3. command >> file	将输出以追加的方式重定向到 file。
+4. n > file	将文件描述符为 n 的文件重定向到 file。
+5. n >> file	将文件描述符为 n 的文件以追加的方式重定向到 file。
+6. n >& m	将输出文件 m 和 n 合并。
+7. n <& m	将输入文件 m 和 n 合并。
+8. << tag	将开始标记 tag 和结束标记 tag 之间的内容作为输入。
 
-result 为： 11
-字符串测试
-参数	说明
-=	等于则为真
-!=	不相等则为真
--z 字符串	字符串的长度为零则为真
--n 字符串	字符串的长度不为零则为真
-实例
-num1="ru1noob"
-num2="runoob"
-if test $num1 = $num2
-then
-    echo '两个字符串相等!'
-else
-    echo '两个字符串不相等!'
-fi
-输出结果：
 
-两个字符串不相等!
-文件测试
-参数	说明
--e 文件名	如果文件存在则为真
--r 文件名	如果文件存在且可读则为真
--w 文件名	如果文件存在且可写则为真
--x 文件名	如果文件存在且可执行则为真
--s 文件名	如果文件存在且至少有一个字符则为真
--d 文件名	如果文件存在且为目录则为真
--f 文件名	如果文件存在且为普通文件则为真
--c 文件名	如果文件存在且为字符型特殊文件则为真
--b 文件名	如果文件存在且为块特殊文件则为真
-实例
-cd /bin
-if test -e ./bash
-then
-    echo '文件已存在!'
-else
-    echo '文件不存在!'
-fi
-输出结果：
+command1 > file1
+命令执行command1然后将输出的内容存入file1。
+注意任何file1内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用>>操作符。
 
-文件已存在!
-另外，Shell 还提供了与 (-a)、或( -o )、非( ! ) 三个逻辑操作符用于将测试条件连接起来，其优先级为： ! 最高， -a 次之， -o 最低。例如：
+在 Bash 中，"<" 和 ">" 这两个符号分别表示输入重定向和输出重定向。
 
-实例
-cd /bin
-if test -e ./notFile -o -e ./bash
-then
-    echo '至少有一个文件存在!'
-else
-    echo '两个文件都不存在'
-fi
-输出结果：
+"<" 表示输入重定向，可以从文件或命令的输出中获取输入。例如，可以使用命令 cat < file.txt 将 file.txt 文件的内容作为 cat 命令的输入。
+">" 表示输出重定向，可以将命令的输出写入文件。例如，可以使用命令 ls > file.txt 将 ls 命令的输出写入到 file.txt 文件中。
+除了这两个符号外，还有一些相关的符号，例如 ">>" 表示追加输出到文件，"<>" 表示以读写方式打开文件等等。
 
-至少有一个文件存在!
+需要注意的是，在 Bash 中输入输出重定向符号前后都不能有空格，否则 Bash 会将它们视为命令参数的一部分。
+
+
+
+
+[Shell 文件包含外部脚本]
+使用 . 号来引用test1.sh 文件
+. ./test1.sh
